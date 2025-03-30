@@ -1,0 +1,230 @@
+[
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo.mongo_client",
+        "description": "pymongo.mongo_client",
+        "isExtraImport": true,
+        "detail": "pymongo.mongo_client",
+        "documentation": {}
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Algorithm",
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "isExtraImport": true,
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "algorithms_dict",
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "isExtraImport": true,
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "Algorithm",
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "isExtraImport": true,
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "algorithms_dict",
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "isExtraImport": true,
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "importPath": "database.configurations",
+        "description": "database.configurations",
+        "isExtraImport": true,
+        "detail": "database.configurations",
+        "documentation": {}
+    },
+    {
+        "label": "all_algorithms",
+        "importPath": "Models.schemas",
+        "description": "Models.schemas",
+        "isExtraImport": true,
+        "detail": "Models.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "BigOComplexity",
+        "kind": 6,
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "peekOfCode": "class BigOComplexity(Enum):\n    CONSTANT = 'O(1)'\n    LINEAR = 'O(N)'\n    QUADRATIC = 'O(N^2)'\n    LOGARITHMIC = 'O(logN)'\n    LOG_LINEAR = 'O(NlogN)'\n    CUBIC = 'O(n^3)'\n    EXPONENTIAL = 'O(2^n)'\n    FACTORIAL = 'O(n!)'\nalgorithms_dict = {",
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "Algorithm",
+        "kind": 6,
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "peekOfCode": "class Algorithm(BaseModel):\n    name: str\n    description: str\n    complexity: str\n    is_done: bool = False\n    creation: int = int( datetime.timestamp(datetime.now()))\n    # ? explain this \n    class Config:\n        use_enum_values = True",
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "algorithms_dict",
+        "kind": 5,
+        "importPath": "Models.models",
+        "description": "Models.models",
+        "peekOfCode": "algorithms_dict = {\n    'linear_search': BigOComplexity.LINEAR.value,\n    'binary_search': BigOComplexity.LOGARITHMIC.value,\n    'bubble_sort': BigOComplexity.QUADRATIC.value\n}\nclass Algorithm(BaseModel):\n    name: str\n    description: str\n    complexity: str\n    is_done: bool = False",
+        "detail": "Models.models",
+        "documentation": {}
+    },
+    {
+        "label": "individual_algo",
+        "kind": 2,
+        "importPath": "Models.schemas",
+        "description": "Models.schemas",
+        "peekOfCode": "def individual_algo(algo):\n    return {\n        \"_id\": str(algo[\"_id\"]),\n        \"name\": str(algo[\"name\"]),\n        \"description\": str(algo[\"description\"]),\n        \"complexity\": str(algo[\"complexity\"]),\n        \"is_done\": str(algo[\"is_done\"]),\n        \"creation\": str(algo[\"creation\"]),\n    }\n    # name: str",
+        "detail": "Models.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "all_algorithms",
+        "kind": 2,
+        "importPath": "Models.schemas",
+        "description": "Models.schemas",
+        "peekOfCode": "def all_algorithms(algos):\n    return [individual_algo(algo) for algo in algos]",
+        "detail": "Models.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "database.configurations",
+        "description": "database.configurations",
+        "peekOfCode": "client = MongoClient(\"localhost\", 27017)\n# 1. create db\ndb = client.algoretmia_db\n# create collection\n# todo = db.todo \ncollection = db.algorithms\n# FIXME\n# TODO:  - Make a class to instanciate database local or remote\n    # # insert a document\n# from pymongo import MongoClient",
+        "detail": "database.configurations",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "database.configurations",
+        "description": "database.configurations",
+        "peekOfCode": "db = client.algoretmia_db\n# create collection\n# todo = db.todo \ncollection = db.algorithms\n# FIXME\n# TODO:  - Make a class to instanciate database local or remote\n    # # insert a document\n# from pymongo import MongoClient\n# def database_connection():\n#     root = \"localhost\"",
+        "detail": "database.configurations",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "database.configurations",
+        "description": "database.configurations",
+        "peekOfCode": "collection = db.algorithms\n# FIXME\n# TODO:  - Make a class to instanciate database local or remote\n    # # insert a document\n# from pymongo import MongoClient\n# def database_connection():\n#     root = \"localhost\"\n#     client = MongoClient('localhost', 27017)\n#     def __init__():\n#         pass",
+        "detail": "database.configurations",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\nrouter = APIRouter()\n@router.get(\"/\")\nasync def root():\n    return {\"message\": \"hello to algoretmia, your website to learn and train algorithms\"}\n@router.post(\"/algorithm\")\nasync def create_algo(new_algo:Algorithm):\n    try:                \n        complexityType = algorithms_dict.get(new_algo.complexity)\n        if complexityType is None:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/\")\nasync def root():\n    return {\"message\": \"hello to algoretmia, your website to learn and train algorithms\"}\n@router.post(\"/algorithm\")\nasync def create_algo(new_algo:Algorithm):\n    try:                \n        complexityType = algorithms_dict.get(new_algo.complexity)\n        if complexityType is None:\n           raise ValueError(f\"complexity '{new_algo.complexity} is not defined\")",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "new_algo",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "new_algo = {\n    \"name\":\"Etc2\",\n    \"description\": \"this is dumb\",\n    \"complexity\": \"linear_search\"\n}\nprint(new_algo['complexity'])\ntest = algorithms_dict[new_algo['complexity']\n                    ]\nprint(test)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "test",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "test = algorithms_dict[new_algo['complexity']\n                    ]\nprint(test)",
+        "detail": "test",
+        "documentation": {}
+    }
+]
